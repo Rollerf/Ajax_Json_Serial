@@ -1,28 +1,50 @@
 <!DOCTYPE html>
 <html class="no-js" lang="">
-   <head>
-      <meta charset="utf-8">
-      <meta http-equiv="x-ua-compatible" content="ie=edge">
-      <title>ESP8266 Json Ajax</title>
-      <meta name="description" content="">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-   </head>
- 
-   <body>
-	   <div>
-		  Radio:<br>
-			<input type="text" id="ledNumber" name="ledNumber" value="10" checked><br>
-			<input type="radio" id="ledOn" name="status" value="true" checked>
-			<label for="ledOn">ON</label><br>
-			<input type="radio" id="ledOff" name="status" value="false">
-			<label for="ledOff">OFF</label><br>
-			<button type="button" onclick="sendData()">Send data</button>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<title>ESP8266 Json Ajax</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="/css/bootstrap.min.css">
+</head>
+
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				Radio:<br>
+				<input type="text" id="ledNumber" name="ledNumber" value="10" checked><br>
+				<input type="radio" id="ledOn" name="status" value="true" checked>
+				<label for="ledOn">ON</label><br>
+				<input type="radio" id="ledOff" name="status" value="false">
+				<label for="ledOff">OFF</label><br>
+				<button type="button" onclick="sendData()">Send data</button>
+			</div>
 		</div>
-		<div>
-			<br>
-			<label id="receivedText"/>
+
+		<div class="row">
+			<div class="col-md-3">
+				<label id="receivedId1" />
+			</div>
+			<div class="col-md-3">
+				<label id="receivedId2" />
+			</div>
+			<div class="col-md-3">
+				<label id="receivedId3" />
+			</div>
+			<div class="col-md-3">
+				<label id="receivedId4" />
+			</div>
 		</div>
-	</body>
-	
-    <script type="text/javascript" src="./js/main.js"></script>
+		<div class="progress">
+			<div id="myBar" class="progress-bar" role="progressbar"></div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="./js/bootstrap.min.js"></script>
+<script type="text/javascript" src="./js/jQuery.js"></script>
+<script type="text/javascript" src="./js/main.js"></script>
+
 </html>

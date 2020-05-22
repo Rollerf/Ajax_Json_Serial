@@ -3,6 +3,10 @@
 
 SoftwareSerial mySerial(2, 3); // RX, TX
 
+int progress;
+int estado = 0;
+int indice = 0;
+
 void setup()
 {
   // Open serial communications and wait for port to open:
@@ -15,15 +19,59 @@ void setup()
 
 void loop() // run over and over
 {
-  StaticJsonDocument<200> jsonDoc;
-  jsonDoc["id"] = 2;
-  jsonDoc["status"] = 1;
+  StaticJsonDocument<100> jb;
+  JsonObject jsonDoc = jb.to<JsonObject>();
+  if (estado) {
+    estado = 0;
+  } else {
+    estado = 1;
+  }
+
+  switch (indice) {
+
+    case 1:
+      Serial.println("case 1");
+      jsonDoc["id"] = indice;
+      jsonDoc["status"] = estado;
+      indice++;
+      break;
+
+    case 2:
+      Serial.println("case 2");
+      jsonDoc["id"] = indice;
+      jsonDoc["status"] = estado;
+      indice++;
+      break;
+
+    case 3:
+      Serial.println("case 3");
+      jsonDoc["id"] = indice;
+      jsonDoc["status"] = estado;
+      indice++;
+      break;
+
+    case 4:
+      Serial.println("case 4");
+      jsonDoc["id"] = indice;
+      jsonDoc["status"] = estado;
+      jsonDoc["progress"] = progress;
+      if (progress == 100) {
+        progress = 0;
+      } else {
+        progress = progress + 25;
+      }
+      indice++;
+      break;
+
+    default:
+      indice = 1;
+      break;
+  }
+
+  delay(600);
 
   serializeJson(jsonDoc, mySerial);
   serializeJson(jsonDoc, Serial);
   mySerial.println();
-  //mySerial.write("Write");
   Serial.println();
-
-  delay(100);
 }
